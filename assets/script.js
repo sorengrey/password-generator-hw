@@ -1,60 +1,66 @@
-// Assignment Code --
-// querySelector is like getElementById!
+
+
+// attaches the generate button to the variable generateBtn
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+// attaches the hidden element to the variable hiddenElement
+var hiddenElement = document.querySelector("#hidden-element");
+
+// writes generated password into the #password input field
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
- 
 }
 
-// Add event listener to generate button
+// adds event listener to the generate button and triggers the writePassword function
 generateBtn.addEventListener("click", writePassword);
 
+// adds event listener to the generate button and triggers the showForm function
+generateBtn.addEventListener("click", showForm);
+
+// function to show or hide the hidden form
+function showForm() {
+    document.getElementById("hidden").style.display = "block";
+}
+
+ // generates a random 8-character password with letters, numbers, and special characters
+ function generatePassword() {
+  var length = 4,
+      charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+      specialChars = "!@#$%^&*()_+~`|}{[]\:;?><,./-='",
+      returnedPw = "";
+      returnedSp = "";
+  for (var i = 0, n = charset.length; i < length; ++i) {
+      returnedPw += charset.charAt(Math.floor(Math.random() * n));
+  }
+  for (var i = 0, n = specialChars.length; i < length; ++i) {
+      returnedSp += specialChars.charAt(Math.floor(Math.random() * n));
+  }
+  var joinedSets = (returnedPw + returnedSp);
+  var shuffled = joinedSets.split('').sort(function(){return 0.5-Math.random()}).join('');
+  return shuffled;
+}
 
 
-/*  UI adjustments:
+/*  UI adjustments needed:
+  - A hidden element that appears when Generate Password is clicked
   - Desired password length? 8 - 128 
   - Checkboxes for character types - lowercase, uppercase, numeric, special
+  - Error message if you don't click a checkbox "Please select at least one character type." - validation
+  - 
 */
 
 
-//Need an event handler for generateBtn?
-//generateBtn.onclick = writePassword;
 
-
-
-/*This works and does not include special characters. Just generates numbers and letters. 
-
-function generatePassword() {
+//This works and does not include special characters. Just generates numbers and letters. 
+/* function generatePassword() {
     var length = 8,
         charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
         returnedPw = "";
     for (var i = 0, n = charset.length; i < length; ++i) {
         returnedPw += charset.charAt(Math.floor(Math.random() * n));
     }
-    return returnedPw;
-}
-*/
+    return returnedPw; } */
 
-/* This works and includes special characters, but so far only adds them at the end of the password.
-
- function generatePassword() {
-  var length = 4,
-      charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-      specialChars = "!@#$%^&*()_+~`|}{[]\:;?><,./-='"
-      returnedPw = "";
-      returnedSp = "";
-  for (var i = 0, n = charset.length; i < length; ++i) {
-      returnedPw += charset.charAt(Math.floor(Math.random() * n));
-  }
-   for (var i = 0, n = specialChars.length; i < length; ++i) {
-      returnedSp += specialChars.charAt(Math.floor(Math.random() * n));
-  }
-  joinedSets = (returnedPw + returnedSp);
-  return joinedSets;
-}
-*/
