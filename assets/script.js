@@ -3,14 +3,13 @@
 // attaches the generate button to the variable generateBtn
 var generateBtn = document.querySelector("#generate");
 
-// attaches the hidden element to the variable hiddenElement
-var hiddenElement = document.querySelector("#hidden-element");
+// attaches the hidden element to the variable hiddenElement -- might not need this
+//var hiddenElement = document.querySelector("#hidden");
 
 // writes generated password into the #password input field
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
 }
 
@@ -20,14 +19,14 @@ generateBtn.addEventListener("click", writePassword);
 // adds event listener to the generate button and triggers the showForm function
 generateBtn.addEventListener("click", showForm);
 
-// function to show or hide the hidden form
+// function to show the hidden form
 function showForm() {
     document.getElementById("hidden").style.display = "block";
 }
 
  // generates a random 8-character password with letters, numbers, and special characters
  function generatePassword() {
-  var length = 4,
+  var length = document.querySelector("#passwordlength").value,
       charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
       specialChars = "!@#$%^&*()_+~`|}{[]\:;?><,./-='",
       returnedPw = "";
@@ -45,11 +44,7 @@ function showForm() {
 
 
 /*  UI adjustments needed:
-  - A hidden element that appears when Generate Password is clicked
-  - Desired password length? 8 - 128 
-  - Checkboxes for character types - lowercase, uppercase, numeric, special
-  - Error message if you don't click a checkbox "Please select at least one character type." - validation
-  - 
+- Error message if you don't click a checkbox "Please select at least one character type." - validation
 */
 
 
