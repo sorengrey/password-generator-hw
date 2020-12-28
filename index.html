@@ -20,7 +20,16 @@
           <h2>Generate a Password</h2>
         </div>
 
-        <container id="hidden">
+    <container id="hidden"><br>
+
+      <form>
+        <div class="mb-3">
+          <label for="passwordlength" class="form-label">Please enter desired password length between 8 and 128 characters:</label><br>
+          <input type="number" min="8" max="128" class="form-control" id="passwordlength">
+        </div>
+      </form>
+       
+
         <div class="form-check">
           <br>
           Please select the characters you would like to use:
@@ -48,7 +57,7 @@
                     special characters
                   </label>
                         </div>
-                      </container>
+     </container>
 <br>
         <div class="card-body">
           <textarea
